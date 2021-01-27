@@ -6,7 +6,7 @@ import random
 
 from mggEngine import MGGEngine, GameStates
 
-logging.basicConfig(level=logging.INFO, stream=sys.stdout)
+logging.basicConfig(level=logging.DEBUG, stream=sys.stdout)
 logging.getLogger('PIL').setLevel(logging.INFO)
 
 logger = logging.getLogger('main')
@@ -25,9 +25,13 @@ async def action_callback(**kwargs):
         logger.info("We playin' again, bois!")
         return True
 
-engine = MGGEngine(action_callback, 'Windows 2000')
+engine = MGGEngine(action_callback, 'Basilisk II')
 
 engine.start()
 
 loop = asyncio.get_event_loop()
-loop.run_forever()
+try:
+    loop.run_forever()
+finally:
+    loop.run_until_complete(loop.shutdown_asyncgens())
+    loop.close()
