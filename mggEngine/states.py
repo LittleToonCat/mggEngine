@@ -9,4 +9,5 @@ class GameStates(IntEnum):
     CARD_SELECTION = 5
     GET_NEW_CARD   = 6
     GAME_OVER      = 7
-    NEW_GAME       = 8
+    STUCK          = 8
+    NEW_GAME       = 9

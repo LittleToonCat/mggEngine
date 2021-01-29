@@ -24,6 +24,10 @@ async def action_callback(**kwargs):
         # Play again.
         logger.info("We playin' again, bois!")
         return True
+    elif action == GameStates.STUCK:
+        logger.warning("We're-a stuck! :(")
+    else:
+        logger.critical(f"Don't know how to handle action {action}!")
 
 engine = MGGEngine(action_callback, 'Basilisk II')
 
